@@ -17,7 +17,6 @@ typedef struct
 }task;
 
 extern task schTasks[SCH_MAX_TASKS];
-extern task nextTask;
 
 void SchUpdate(void);
 void SchDispatchTasks(void);

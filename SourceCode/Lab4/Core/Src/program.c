@@ -8,8 +8,6 @@ void ScheduleInit(void)
     SchAddTask(Task3, 200, 0);
     SchAddTask(Task4, 300, 40);
     SchAddTask(Task5, 500, 50);
-
-    //nextTask = schTasks[0];
 }
 
 void Task1(void)
