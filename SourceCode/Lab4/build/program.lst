@@ -1,0 +1,396 @@
+ARM GAS  C:\Users\james\AppData\Local\Temp\cc0ynA6M.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"program.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.Task1,"ax",%progbits
+  18              		.align	1
+  19              		.global	Task1
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	Task1:
+  25              	.LFB66:
+  26              		.file 1 "Core/Src/program.c"
+   1:Core/Src/program.c **** #include "program.h"
+   2:Core/Src/program.c **** 
+   3:Core/Src/program.c **** void ScheduleInit(void)
+   4:Core/Src/program.c **** {
+   5:Core/Src/program.c ****     HAL_TIM_Base_Start_IT(&htim2);
+   6:Core/Src/program.c ****     SchAddTask(Task1, 0, 10);
+   7:Core/Src/program.c ****     SchAddTask(Task2, 100, 20);
+   8:Core/Src/program.c ****     SchAddTask(Task3, 200, 0);
+   9:Core/Src/program.c ****     SchAddTask(Task4, 300, 40);
+  10:Core/Src/program.c ****     SchAddTask(Task5, 500, 50);
+  11:Core/Src/program.c **** 
+  12:Core/Src/program.c ****     //nextTask = schTasks[0];
+  13:Core/Src/program.c **** }
+  14:Core/Src/program.c **** 
+  15:Core/Src/program.c **** void Task1(void)
+  16:Core/Src/program.c **** {   
+  27              		.loc 1 16 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  17:Core/Src/program.c ****     HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_3);
+  36              		.loc 1 17 5 view .LVU1
+  37 0002 0821     		movs	r1, #8
+  38 0004 0148     		ldr	r0, .L3
+  39 0006 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+  40              	.LVL0:
+  18:Core/Src/program.c **** }
+ARM GAS  C:\Users\james\AppData\Local\Temp\cc0ynA6M.s 			page 2
+
+
+  41              		.loc 1 18 1 is_stmt 0 view .LVU2
+  42 000a 08BD     		pop	{r3, pc}
+  43              	.L4:
+  44              		.align	2
+  45              	.L3:
+  46 000c 00080140 		.word	1073809408
+  47              		.cfi_endproc
+  48              	.LFE66:
+  50              		.section	.text.Task2,"ax",%progbits
+  51              		.align	1
+  52              		.global	Task2
+  53              		.syntax unified
+  54              		.thumb
+  55              		.thumb_func
+  57              	Task2:
+  58              	.LFB67:
+  19:Core/Src/program.c **** 
+  20:Core/Src/program.c **** void Task2(void)
+  21:Core/Src/program.c **** {
+  59              		.loc 1 21 1 is_stmt 1 view -0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63 0000 08B5     		push	{r3, lr}
+  64              	.LCFI1:
+  65              		.cfi_def_cfa_offset 8
+  66              		.cfi_offset 3, -8
+  67              		.cfi_offset 14, -4
+  22:Core/Src/program.c ****     HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_4);
+  68              		.loc 1 22 5 view .LVU4
+  69 0002 1021     		movs	r1, #16
+  70 0004 0148     		ldr	r0, .L7
+  71 0006 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+  72              	.LVL1:
+  23:Core/Src/program.c **** }
+  73              		.loc 1 23 1 is_stmt 0 view .LVU5
+  74 000a 08BD     		pop	{r3, pc}
+  75              	.L8:
+  76              		.align	2
+  77              	.L7:
+  78 000c 00080140 		.word	1073809408
+  79              		.cfi_endproc
+  80              	.LFE67:
+  82              		.section	.text.Task3,"ax",%progbits
+  83              		.align	1
+  84              		.global	Task3
+  85              		.syntax unified
+  86              		.thumb
+  87              		.thumb_func
+  89              	Task3:
+  90              	.LFB68:
+  24:Core/Src/program.c **** 
+  25:Core/Src/program.c **** void Task3(void)
+  26:Core/Src/program.c **** {
+  91              		.loc 1 26 1 is_stmt 1 view -0
+  92              		.cfi_startproc
+  93              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\james\AppData\Local\Temp\cc0ynA6M.s 			page 3
+
+
+  94              		@ frame_needed = 0, uses_anonymous_args = 0
+  95 0000 08B5     		push	{r3, lr}
+  96              	.LCFI2:
+  97              		.cfi_def_cfa_offset 8
+  98              		.cfi_offset 3, -8
+  99              		.cfi_offset 14, -4
+  27:Core/Src/program.c ****     HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+ 100              		.loc 1 27 5 view .LVU7
+ 101 0002 2021     		movs	r1, #32
+ 102 0004 0148     		ldr	r0, .L11
+ 103 0006 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 104              	.LVL2:
+  28:Core/Src/program.c **** }
+ 105              		.loc 1 28 1 is_stmt 0 view .LVU8
+ 106 000a 08BD     		pop	{r3, pc}
+ 107              	.L12:
+ 108              		.align	2
+ 109              	.L11:
+ 110 000c 00080140 		.word	1073809408
+ 111              		.cfi_endproc
+ 112              	.LFE68:
+ 114              		.section	.text.Task4,"ax",%progbits
+ 115              		.align	1
+ 116              		.global	Task4
+ 117              		.syntax unified
+ 118              		.thumb
+ 119              		.thumb_func
+ 121              	Task4:
+ 122              	.LFB69:
+  29:Core/Src/program.c **** 
+  30:Core/Src/program.c **** void Task4(void)
+  31:Core/Src/program.c **** {
+ 123              		.loc 1 31 1 is_stmt 1 view -0
+ 124              		.cfi_startproc
+ 125              		@ args = 0, pretend = 0, frame = 0
+ 126              		@ frame_needed = 0, uses_anonymous_args = 0
+ 127 0000 08B5     		push	{r3, lr}
+ 128              	.LCFI3:
+ 129              		.cfi_def_cfa_offset 8
+ 130              		.cfi_offset 3, -8
+ 131              		.cfi_offset 14, -4
+  32:Core/Src/program.c ****     HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_6);
+ 132              		.loc 1 32 5 view .LVU10
+ 133 0002 4021     		movs	r1, #64
+ 134 0004 0148     		ldr	r0, .L15
+ 135 0006 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 136              	.LVL3:
+  33:Core/Src/program.c **** }
+ 137              		.loc 1 33 1 is_stmt 0 view .LVU11
+ 138 000a 08BD     		pop	{r3, pc}
+ 139              	.L16:
+ 140              		.align	2
+ 141              	.L15:
+ 142 000c 00080140 		.word	1073809408
+ 143              		.cfi_endproc
+ 144              	.LFE69:
+ 146              		.section	.text.Task5,"ax",%progbits
+ARM GAS  C:\Users\james\AppData\Local\Temp\cc0ynA6M.s 			page 4
+
+
+ 147              		.align	1
+ 148              		.global	Task5
+ 149              		.syntax unified
+ 150              		.thumb
+ 151              		.thumb_func
+ 153              	Task5:
+ 154              	.LFB70:
+  34:Core/Src/program.c **** 
+  35:Core/Src/program.c **** void Task5(void)
+  36:Core/Src/program.c **** {
+ 155              		.loc 1 36 1 is_stmt 1 view -0
+ 156              		.cfi_startproc
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159 0000 08B5     		push	{r3, lr}
+ 160              	.LCFI4:
+ 161              		.cfi_def_cfa_offset 8
+ 162              		.cfi_offset 3, -8
+ 163              		.cfi_offset 14, -4
+  37:Core/Src/program.c ****     HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_7);
+ 164              		.loc 1 37 5 view .LVU13
+ 165 0002 8021     		movs	r1, #128
+ 166 0004 0148     		ldr	r0, .L19
+ 167 0006 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 168              	.LVL4:
+  38:Core/Src/program.c **** }
+ 169              		.loc 1 38 1 is_stmt 0 view .LVU14
+ 170 000a 08BD     		pop	{r3, pc}
+ 171              	.L20:
+ 172              		.align	2
+ 173              	.L19:
+ 174 000c 00080140 		.word	1073809408
+ 175              		.cfi_endproc
+ 176              	.LFE70:
+ 178              		.section	.text.ScheduleInit,"ax",%progbits
+ 179              		.align	1
+ 180              		.global	ScheduleInit
+ 181              		.syntax unified
+ 182              		.thumb
+ 183              		.thumb_func
+ 185              	ScheduleInit:
+ 186              	.LFB65:
+   4:Core/Src/program.c ****     HAL_TIM_Base_Start_IT(&htim2);
+ 187              		.loc 1 4 1 is_stmt 1 view -0
+ 188              		.cfi_startproc
+ 189              		@ args = 0, pretend = 0, frame = 0
+ 190              		@ frame_needed = 0, uses_anonymous_args = 0
+ 191 0000 08B5     		push	{r3, lr}
+ 192              	.LCFI5:
+ 193              		.cfi_def_cfa_offset 8
+ 194              		.cfi_offset 3, -8
+ 195              		.cfi_offset 14, -4
+   5:Core/Src/program.c ****     SchAddTask(Task1, 0, 10);
+ 196              		.loc 1 5 5 view .LVU16
+ 197 0002 0F48     		ldr	r0, .L23
+ 198 0004 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+ 199              	.LVL5:
+ARM GAS  C:\Users\james\AppData\Local\Temp\cc0ynA6M.s 			page 5
+
+
+   6:Core/Src/program.c ****     SchAddTask(Task2, 100, 20);
+ 200              		.loc 1 6 5 view .LVU17
+ 201 0008 0A22     		movs	r2, #10
+ 202 000a 0021     		movs	r1, #0
+ 203 000c 0D48     		ldr	r0, .L23+4
+ 204 000e FFF7FEFF 		bl	SchAddTask
+ 205              	.LVL6:
+   7:Core/Src/program.c ****     SchAddTask(Task3, 200, 0);
+ 206              		.loc 1 7 5 view .LVU18
+ 207 0012 1422     		movs	r2, #20
+ 208 0014 6421     		movs	r1, #100
+ 209 0016 0C48     		ldr	r0, .L23+8
+ 210 0018 FFF7FEFF 		bl	SchAddTask
+ 211              	.LVL7:
+   8:Core/Src/program.c ****     SchAddTask(Task4, 300, 40);
+ 212              		.loc 1 8 5 view .LVU19
+ 213 001c 0022     		movs	r2, #0
+ 214 001e C821     		movs	r1, #200
+ 215 0020 0A48     		ldr	r0, .L23+12
+ 216 0022 FFF7FEFF 		bl	SchAddTask
+ 217              	.LVL8:
+   9:Core/Src/program.c ****     SchAddTask(Task5, 500, 50);
+ 218              		.loc 1 9 5 view .LVU20
+ 219 0026 2822     		movs	r2, #40
+ 220 0028 4FF49671 		mov	r1, #300
+ 221 002c 0848     		ldr	r0, .L23+16
+ 222 002e FFF7FEFF 		bl	SchAddTask
+ 223              	.LVL9:
+  10:Core/Src/program.c **** 
+ 224              		.loc 1 10 5 view .LVU21
+ 225 0032 3222     		movs	r2, #50
+ 226 0034 4FF4FA71 		mov	r1, #500
+ 227 0038 0648     		ldr	r0, .L23+20
+ 228 003a FFF7FEFF 		bl	SchAddTask
+ 229              	.LVL10:
+  13:Core/Src/program.c **** 
+ 230              		.loc 1 13 1 is_stmt 0 view .LVU22
+ 231 003e 08BD     		pop	{r3, pc}
+ 232              	.L24:
+ 233              		.align	2
+ 234              	.L23:
+ 235 0040 00000000 		.word	htim2
+ 236 0044 00000000 		.word	Task1
+ 237 0048 00000000 		.word	Task2
+ 238 004c 00000000 		.word	Task3
+ 239 0050 00000000 		.word	Task4
+ 240 0054 00000000 		.word	Task5
+ 241              		.cfi_endproc
+ 242              	.LFE65:
+ 244              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
+ 245              		.align	1
+ 246              		.global	HAL_TIM_PeriodElapsedCallback
+ 247              		.syntax unified
+ 248              		.thumb
+ 249              		.thumb_func
+ 251              	HAL_TIM_PeriodElapsedCallback:
+ 252              	.LVL11:
+ARM GAS  C:\Users\james\AppData\Local\Temp\cc0ynA6M.s 			page 6
+
+
+ 253              	.LFB71:
+  39:Core/Src/program.c **** 
+  40:Core/Src/program.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+  41:Core/Src/program.c **** {
+ 254              		.loc 1 41 1 is_stmt 1 view -0
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258              		.loc 1 41 1 is_stmt 0 view .LVU24
+ 259 0000 08B5     		push	{r3, lr}
+ 260              	.LCFI6:
+ 261              		.cfi_def_cfa_offset 8
+ 262              		.cfi_offset 3, -8
+ 263              		.cfi_offset 14, -4
+  42:Core/Src/program.c **** 	if(htim->Instance == htim2.Instance)
+ 264              		.loc 1 42 2 is_stmt 1 view .LVU25
+ 265              		.loc 1 42 9 is_stmt 0 view .LVU26
+ 266 0002 0268     		ldr	r2, [r0]
+ 267              		.loc 1 42 28 view .LVU27
+ 268 0004 034B     		ldr	r3, .L29
+ 269 0006 1B68     		ldr	r3, [r3]
+ 270              		.loc 1 42 4 view .LVU28
+ 271 0008 9A42     		cmp	r2, r3
+ 272 000a 00D0     		beq	.L28
+ 273              	.LVL12:
+ 274              	.L25:
+  43:Core/Src/program.c ****     {
+  44:Core/Src/program.c **** 		SchUpdate();
+  45:Core/Src/program.c **** 	}
+  46:Core/Src/program.c **** }...
+ 275              		.loc 1 46 1 view .LVU29
+ 276 000c 08BD     		pop	{r3, pc}
+ 277              	.LVL13:
+ 278              	.L28:
+  44:Core/Src/program.c **** 		SchUpdate();
+ 279              		.loc 1 44 3 is_stmt 1 view .LVU30
+ 280 000e FFF7FEFF 		bl	SchUpdate
+ 281              	.LVL14:
+ 282              		.loc 1 46 1 is_stmt 0 view .LVU31
+ 283 0012 FBE7     		b	.L25
+ 284              	.L30:
+ 285              		.align	2
+ 286              	.L29:
+ 287 0014 00000000 		.word	htim2
+ 288              		.cfi_endproc
+ 289              	.LFE71:
+ 291              		.text
+ 292              	.Letext0:
+ 293              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 294              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 295              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103x6.h"
+ 296              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 297              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 298              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 299              		.file 8 "Core/Inc/scheduler.h"
+ 300              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 301              		.file 10 "Core/Inc/program.h"
+ARM GAS  C:\Users\james\AppData\Local\Temp\cc0ynA6M.s 			page 7
+
+
+ARM GAS  C:\Users\james\AppData\Local\Temp\cc0ynA6M.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 program.c
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:18     .text.Task1:00000000 $t
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:24     .text.Task1:00000000 Task1
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:46     .text.Task1:0000000c $d
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:51     .text.Task2:00000000 $t
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:57     .text.Task2:00000000 Task2
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:78     .text.Task2:0000000c $d
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:83     .text.Task3:00000000 $t
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:89     .text.Task3:00000000 Task3
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:110    .text.Task3:0000000c $d
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:115    .text.Task4:00000000 $t
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:121    .text.Task4:00000000 Task4
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:142    .text.Task4:0000000c $d
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:147    .text.Task5:00000000 $t
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:153    .text.Task5:00000000 Task5
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:174    .text.Task5:0000000c $d
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:179    .text.ScheduleInit:00000000 $t
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:185    .text.ScheduleInit:00000000 ScheduleInit
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:235    .text.ScheduleInit:00000040 $d
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:245    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:251    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\james\AppData\Local\Temp\cc0ynA6M.s:287    .text.HAL_TIM_PeriodElapsedCallback:00000014 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_TogglePin
+HAL_TIM_Base_Start_IT
+SchAddTask
+htim2
+SchUpdate

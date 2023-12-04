@@ -1,0 +1,709 @@
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"scheduler.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.SchUpdate,"ax",%progbits
+  18              		.align	1
+  19              		.global	SchUpdate
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	SchUpdate:
+  25              	.LFB0:
+  26              		.file 1 "Core/Src/scheduler.c"
+   1:Core/Src/scheduler.c **** #include "scheduler.h"
+   2:Core/Src/scheduler.c **** 
+   3:Core/Src/scheduler.c **** task schTasks[SCH_MAX_TASKS];
+   4:Core/Src/scheduler.c **** //task nextTask;
+   5:Core/Src/scheduler.c **** 
+   6:Core/Src/scheduler.c **** 
+   7:Core/Src/scheduler.c **** void SchUpdate(void)
+   8:Core/Src/scheduler.c **** {
+  27              		.loc 1 8 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+   9:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+  32              		.loc 1 9 5 view .LVU1
+  33              	.LBB2:
+  34              		.loc 1 9 10 view .LVU2
+  35              	.LVL0:
+  36              		.loc 1 9 18 is_stmt 0 view .LVU3
+  37 0000 0023     		movs	r3, #0
+  38              		.loc 1 9 5 view .LVU4
+  39 0002 08E0     		b	.L2
+  40              	.LVL1:
+  41              	.L4:
+  10:Core/Src/scheduler.c ****     {
+  11:Core/Src/scheduler.c ****         if(schTasks[i].pTask != 0x0000)
+  12:Core/Src/scheduler.c ****         {
+  13:Core/Src/scheduler.c ****             if(schTasks[i].Delay == 0)
+  14:Core/Src/scheduler.c ****             {
+  15:Core/Src/scheduler.c ****                 schTasks[i].RunMe = 1;
+  16:Core/Src/scheduler.c ****             }
+  17:Core/Src/scheduler.c ****             else
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 2
+
+
+  18:Core/Src/scheduler.c ****             {
+  19:Core/Src/scheduler.c ****                 schTasks[i].Delay -= 1;
+  42              		.loc 1 19 17 is_stmt 1 view .LVU5
+  43              		.loc 1 19 35 is_stmt 0 view .LVU6
+  44 0004 03EB8302 		add	r2, r3, r3, lsl #2
+  45 0008 9000     		lsls	r0, r2, #2
+  46 000a 0E4A     		ldr	r2, .L7
+  47 000c 0244     		add	r2, r2, r0
+  48 000e 0139     		subs	r1, r1, #1
+  49 0010 5160     		str	r1, [r2, #4]
+  50              	.L3:
+   9:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+  51              		.loc 1 9 44 is_stmt 1 discriminator 2 view .LVU7
+   9:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+  52              		.loc 1 9 45 is_stmt 0 discriminator 2 view .LVU8
+  53 0012 0133     		adds	r3, r3, #1
+  54              	.LVL2:
+   9:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+  55              		.loc 1 9 45 discriminator 2 view .LVU9
+  56 0014 DBB2     		uxtb	r3, r3
+  57              	.LVL3:
+  58              	.L2:
+   9:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+  59              		.loc 1 9 25 is_stmt 1 discriminator 1 view .LVU10
+   9:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+  60              		.loc 1 9 5 is_stmt 0 discriminator 1 view .LVU11
+  61 0016 092B     		cmp	r3, #9
+  62 0018 13D8     		bhi	.L6
+  11:Core/Src/scheduler.c ****         {
+  63              		.loc 1 11 9 is_stmt 1 view .LVU12
+  11:Core/Src/scheduler.c ****         {
+  64              		.loc 1 11 23 is_stmt 0 view .LVU13
+  65 001a 03EB8300 		add	r0, r3, r3, lsl #2
+  66 001e 8100     		lsls	r1, r0, #2
+  67 0020 0848     		ldr	r0, .L7
+  68 0022 4158     		ldr	r1, [r0, r1]
+  11:Core/Src/scheduler.c ****         {
+  69              		.loc 1 11 11 view .LVU14
+  70 0024 0029     		cmp	r1, #0
+  71 0026 F4D0     		beq	.L3
+  13:Core/Src/scheduler.c ****             {
+  72              		.loc 1 13 13 is_stmt 1 view .LVU15
+  13:Core/Src/scheduler.c ****             {
+  73              		.loc 1 13 27 is_stmt 0 view .LVU16
+  74 0028 03EB8301 		add	r1, r3, r3, lsl #2
+  75 002c 8800     		lsls	r0, r1, #2
+  76 002e 0549     		ldr	r1, .L7
+  77 0030 0144     		add	r1, r1, r0
+  78 0032 4968     		ldr	r1, [r1, #4]
+  13:Core/Src/scheduler.c ****             {
+  79              		.loc 1 13 15 view .LVU17
+  80 0034 0029     		cmp	r1, #0
+  81 0036 E5D1     		bne	.L4
+  15:Core/Src/scheduler.c ****             }
+  82              		.loc 1 15 17 is_stmt 1 view .LVU18
+  15:Core/Src/scheduler.c ****             }
+  83              		.loc 1 15 35 is_stmt 0 view .LVU19
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 3
+
+
+  84 0038 024A     		ldr	r2, .L7
+  85 003a 0244     		add	r2, r2, r0
+  86 003c 0121     		movs	r1, #1
+  87 003e 1173     		strb	r1, [r2, #12]
+  88 0040 E7E7     		b	.L3
+  89              	.L6:
+  90              	.LBE2:
+  20:Core/Src/scheduler.c ****             }
+  21:Core/Src/scheduler.c ****         }
+  22:Core/Src/scheduler.c ****     }
+  23:Core/Src/scheduler.c **** }
+  91              		.loc 1 23 1 view .LVU20
+  92 0042 7047     		bx	lr
+  93              	.L8:
+  94              		.align	2
+  95              	.L7:
+  96 0044 00000000 		.word	.LANCHOR0
+  97              		.cfi_endproc
+  98              	.LFE0:
+ 100              		.section	.text.SchAddTask,"ax",%progbits
+ 101              		.align	1
+ 102              		.global	SchAddTask
+ 103              		.syntax unified
+ 104              		.thumb
+ 105              		.thumb_func
+ 107              	SchAddTask:
+ 108              	.LVL4:
+ 109              	.LFB2:
+  24:Core/Src/scheduler.c **** 
+  25:Core/Src/scheduler.c **** void SchDispatchTasks(void)
+  26:Core/Src/scheduler.c **** {
+  27:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+  28:Core/Src/scheduler.c ****     {
+  29:Core/Src/scheduler.c ****         if(schTasks[i].RunMe)
+  30:Core/Src/scheduler.c ****         {
+  31:Core/Src/scheduler.c ****             schTasks[i].RunMe = 0;
+  32:Core/Src/scheduler.c ****             (*schTasks[i].pTask)();
+  33:Core/Src/scheduler.c **** 
+  34:Core/Src/scheduler.c ****             task *temp = (task *)malloc(sizeof(task));
+  35:Core/Src/scheduler.c ****             memcpy(temp, &schTasks[i], sizeof(task));
+  36:Core/Src/scheduler.c **** 
+  37:Core/Src/scheduler.c ****             if(schTasks[i].Period == 0)
+  38:Core/Src/scheduler.c ****             {
+  39:Core/Src/scheduler.c ****                 SchDeleteTask(schTasks[i].TaskId);
+  40:Core/Src/scheduler.c ****             }
+  41:Core/Src/scheduler.c ****             else
+  42:Core/Src/scheduler.c ****             {
+  43:Core/Src/scheduler.c ****                 schTasks[i].Delay = temp->Period;
+  44:Core/Src/scheduler.c ****             }
+  45:Core/Src/scheduler.c **** 
+  46:Core/Src/scheduler.c ****             free(temp);
+  47:Core/Src/scheduler.c ****         }
+  48:Core/Src/scheduler.c ****     }
+  49:Core/Src/scheduler.c **** }
+  50:Core/Src/scheduler.c **** 
+  51:Core/Src/scheduler.c **** uint32_t SchAddTask(void (*func)(), uint16_t delay, uint16_t period)
+  52:Core/Src/scheduler.c **** {
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 4
+
+
+ 110              		.loc 1 52 1 is_stmt 1 view -0
+ 111              		.cfi_startproc
+ 112              		@ args = 0, pretend = 0, frame = 0
+ 113              		@ frame_needed = 0, uses_anonymous_args = 0
+  53:Core/Src/scheduler.c ****     // Check blank slot in queue
+  54:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 114              		.loc 1 54 5 view .LVU22
+ 115              	.LBB3:
+ 116              		.loc 1 54 10 view .LVU23
+ 117              		.loc 1 54 18 is_stmt 0 view .LVU24
+ 118 0000 0023     		movs	r3, #0
+ 119              	.LVL5:
+ 120              		.loc 1 54 25 is_stmt 1 view .LVU25
+ 121              		.loc 1 54 5 is_stmt 0 view .LVU26
+ 122 0002 092B     		cmp	r3, #9
+ 123 0004 19D8     		bhi	.L19
+ 124              	.LBE3:
+  52:Core/Src/scheduler.c ****     // Check blank slot in queue
+ 125              		.loc 1 52 1 view .LVU27
+ 126 0006 10B5     		push	{r4, lr}
+ 127              	.LCFI0:
+ 128              		.cfi_def_cfa_offset 8
+ 129              		.cfi_offset 4, -8
+ 130              		.cfi_offset 14, -4
+ 131              	.L13:
+ 132              	.LBB4:
+  55:Core/Src/scheduler.c ****     {
+  56:Core/Src/scheduler.c ****         if(schTasks[i].pTask == 0x0000)
+ 133              		.loc 1 56 9 is_stmt 1 view .LVU28
+ 134              		.loc 1 56 23 is_stmt 0 view .LVU29
+ 135 0008 9E46     		mov	lr, r3
+ 136 000a 03EB830C 		add	ip, r3, r3, lsl #2
+ 137 000e 0C4C     		ldr	r4, .L21
+ 138 0010 54F82C40 		ldr	r4, [r4, ip, lsl #2]
+ 139              		.loc 1 56 11 view .LVU30
+ 140 0014 2CB1     		cbz	r4, .L20
+  54:Core/Src/scheduler.c ****     {
+ 141              		.loc 1 54 44 is_stmt 1 discriminator 2 view .LVU31
+  54:Core/Src/scheduler.c ****     {
+ 142              		.loc 1 54 45 is_stmt 0 discriminator 2 view .LVU32
+ 143 0016 0133     		adds	r3, r3, #1
+ 144              	.LVL6:
+  54:Core/Src/scheduler.c ****     {
+ 145              		.loc 1 54 45 discriminator 2 view .LVU33
+ 146 0018 DBB2     		uxtb	r3, r3
+ 147              	.LVL7:
+  54:Core/Src/scheduler.c ****     {
+ 148              		.loc 1 54 25 is_stmt 1 discriminator 2 view .LVU34
+  54:Core/Src/scheduler.c ****     {
+ 149              		.loc 1 54 5 is_stmt 0 discriminator 2 view .LVU35
+ 150 001a 092B     		cmp	r3, #9
+ 151 001c F4D9     		bls	.L13
+ 152              	.LBE4:
+  57:Core/Src/scheduler.c ****         {
+  58:Core/Src/scheduler.c ****             schTasks[i].pTask = func;
+  59:Core/Src/scheduler.c ****             schTasks[i].Delay = delay;
+  60:Core/Src/scheduler.c ****             schTasks[i].Period = period;
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 5
+
+
+  61:Core/Src/scheduler.c ****             schTasks[i].TaskId = i + 1;
+  62:Core/Src/scheduler.c **** 
+  63:Core/Src/scheduler.c ****             return schTasks[i].TaskId;
+  64:Core/Src/scheduler.c ****         }
+  65:Core/Src/scheduler.c ****     }
+  66:Core/Src/scheduler.c ****     return 0;
+ 153              		.loc 1 66 12 view .LVU36
+ 154 001e 0020     		movs	r0, #0
+ 155              	.LVL8:
+ 156              	.L9:
+  67:Core/Src/scheduler.c **** }
+ 157              		.loc 1 67 1 view .LVU37
+ 158 0020 10BD     		pop	{r4, pc}
+ 159              	.LVL9:
+ 160              	.L20:
+ 161              	.LBB5:
+  58:Core/Src/scheduler.c ****             schTasks[i].Delay = delay;
+ 162              		.loc 1 58 13 is_stmt 1 view .LVU38
+  58:Core/Src/scheduler.c ****             schTasks[i].Delay = delay;
+ 163              		.loc 1 58 31 is_stmt 0 view .LVU39
+ 164 0022 074B     		ldr	r3, .L21
+ 165              	.LVL10:
+  58:Core/Src/scheduler.c ****             schTasks[i].Delay = delay;
+ 166              		.loc 1 58 31 view .LVU40
+ 167 0024 03EB8C04 		add	r4, r3, ip, lsl #2
+ 168 0028 43F82C00 		str	r0, [r3, ip, lsl #2]
+  59:Core/Src/scheduler.c ****             schTasks[i].Period = period;
+ 169              		.loc 1 59 13 is_stmt 1 view .LVU41
+  59:Core/Src/scheduler.c ****             schTasks[i].Period = period;
+ 170              		.loc 1 59 31 is_stmt 0 view .LVU42
+ 171 002c 6160     		str	r1, [r4, #4]
+  60:Core/Src/scheduler.c ****             schTasks[i].TaskId = i + 1;
+ 172              		.loc 1 60 13 is_stmt 1 view .LVU43
+  60:Core/Src/scheduler.c ****             schTasks[i].TaskId = i + 1;
+ 173              		.loc 1 60 32 is_stmt 0 view .LVU44
+ 174 002e A260     		str	r2, [r4, #8]
+  61:Core/Src/scheduler.c **** 
+ 175              		.loc 1 61 13 is_stmt 1 view .LVU45
+  61:Core/Src/scheduler.c **** 
+ 176              		.loc 1 61 36 is_stmt 0 view .LVU46
+ 177 0030 0EF10100 		add	r0, lr, #1
+ 178              	.LVL11:
+  61:Core/Src/scheduler.c **** 
+ 179              		.loc 1 61 32 view .LVU47
+ 180 0034 A646     		mov	lr, r4
+ 181 0036 2061     		str	r0, [r4, #16]
+  63:Core/Src/scheduler.c ****         }
+ 182              		.loc 1 63 13 is_stmt 1 view .LVU48
+  63:Core/Src/scheduler.c ****         }
+ 183              		.loc 1 63 31 is_stmt 0 view .LVU49
+ 184 0038 F2E7     		b	.L9
+ 185              	.LVL12:
+ 186              	.L19:
+ 187              	.LCFI1:
+ 188              		.cfi_def_cfa_offset 0
+ 189              		.cfi_restore 4
+ 190              		.cfi_restore 14
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 6
+
+
+  63:Core/Src/scheduler.c ****         }
+ 191              		.loc 1 63 31 view .LVU50
+ 192              	.LBE5:
+  66:Core/Src/scheduler.c **** }
+ 193              		.loc 1 66 12 view .LVU51
+ 194 003a 0020     		movs	r0, #0
+ 195              	.LVL13:
+ 196              		.loc 1 67 1 view .LVU52
+ 197 003c 7047     		bx	lr
+ 198              	.L22:
+ 199 003e 00BF     		.align	2
+ 200              	.L21:
+ 201 0040 00000000 		.word	.LANCHOR0
+ 202              		.cfi_endproc
+ 203              	.LFE2:
+ 205              		.section	.text.SchDeleteTask,"ax",%progbits
+ 206              		.align	1
+ 207              		.global	SchDeleteTask
+ 208              		.syntax unified
+ 209              		.thumb
+ 210              		.thumb_func
+ 212              	SchDeleteTask:
+ 213              	.LVL14:
+ 214              	.LFB3:
+  68:Core/Src/scheduler.c **** 
+  69:Core/Src/scheduler.c **** uint8_t SchDeleteTask(uint32_t id)
+  70:Core/Src/scheduler.c **** {
+ 215              		.loc 1 70 1 is_stmt 1 view -0
+ 216              		.cfi_startproc
+ 217              		@ args = 0, pretend = 0, frame = 0
+ 218              		@ frame_needed = 0, uses_anonymous_args = 0
+  71:Core/Src/scheduler.c ****     if(id > SCH_MAX_TASKS)
+ 219              		.loc 1 71 5 view .LVU54
+ 220              		.loc 1 71 7 is_stmt 0 view .LVU55
+ 221 0000 0A28     		cmp	r0, #10
+ 222 0002 2CD8     		bhi	.L30
+ 223              	.LBB6:
+  72:Core/Src/scheduler.c ****         return 0;
+  73:Core/Src/scheduler.c **** 
+  74:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 224              		.loc 1 74 18 view .LVU56
+ 225 0004 0023     		movs	r3, #0
+ 226 0006 1CE0     		b	.L25
+ 227              	.LVL15:
+ 228              	.L28:
+ 229              	.LCFI2:
+ 230              		.cfi_def_cfa_offset 8
+ 231              		.cfi_offset 4, -8
+ 232              		.cfi_offset 14, -4
+ 233              	.LBB7:
+  75:Core/Src/scheduler.c ****     {
+  76:Core/Src/scheduler.c ****         if(schTasks[i].TaskId == id)
+  77:Core/Src/scheduler.c ****         {
+  78:Core/Src/scheduler.c ****             for (uint8_t j = i; j < SCH_MAX_TASKS - 1; j++)
+  79:Core/Src/scheduler.c ****             {
+  80:Core/Src/scheduler.c ****                 schTasks[j] = schTasks[j+1];
+ 234              		.loc 1 80 17 is_stmt 1 discriminator 3 view .LVU57
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 7
+
+
+ 235              		.loc 1 80 41 is_stmt 0 discriminator 3 view .LVU58
+ 236 0008 5C1C     		adds	r4, r3, #1
+ 237              		.loc 1 80 29 discriminator 3 view .LVU59
+ 238 000a 164A     		ldr	r2, .L37
+ 239 000c 03EB8303 		add	r3, r3, r3, lsl #2
+ 240              	.LVL16:
+ 241              		.loc 1 80 29 discriminator 3 view .LVU60
+ 242 0010 04EB840E 		add	lr, r4, r4, lsl #2
+ 243 0014 02EB830C 		add	ip, r2, r3, lsl #2
+ 244 0018 02EB8E0E 		add	lr, r2, lr, lsl #2
+ 245 001c BEE80F00 		ldmia	lr!, {r0, r1, r2, r3}
+ 246 0020 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 247 0024 DEF80030 		ldr	r3, [lr]
+ 248 0028 CCF80030 		str	r3, [ip]
+  78:Core/Src/scheduler.c ****             {
+ 249              		.loc 1 78 56 is_stmt 1 discriminator 3 view .LVU61
+  78:Core/Src/scheduler.c ****             {
+ 250              		.loc 1 78 57 is_stmt 0 discriminator 3 view .LVU62
+ 251 002c E3B2     		uxtb	r3, r4
+ 252              	.LVL17:
+ 253              	.L26:
+  78:Core/Src/scheduler.c ****             {
+ 254              		.loc 1 78 33 is_stmt 1 discriminator 1 view .LVU63
+  78:Core/Src/scheduler.c ****             {
+ 255              		.loc 1 78 13 is_stmt 0 discriminator 1 view .LVU64
+ 256 002e 082B     		cmp	r3, #8
+ 257 0030 EAD9     		bls	.L28
+ 258              	.LBE7:
+  81:Core/Src/scheduler.c ****             }
+  82:Core/Src/scheduler.c ****             schTasks[SCH_MAX_TASKS-1].pTask = 0x0000;
+ 259              		.loc 1 82 13 is_stmt 1 view .LVU65
+ 260              		.loc 1 82 45 is_stmt 0 view .LVU66
+ 261 0032 0C4B     		ldr	r3, .L37
+ 262              	.LVL18:
+ 263              		.loc 1 82 45 view .LVU67
+ 264 0034 0022     		movs	r2, #0
+ 265 0036 C3F8B420 		str	r2, [r3, #180]
+  83:Core/Src/scheduler.c **** 
+  84:Core/Src/scheduler.c ****             return 1;
+ 266              		.loc 1 84 13 is_stmt 1 view .LVU68
+ 267              		.loc 1 84 20 is_stmt 0 view .LVU69
+ 268 003a 0120     		movs	r0, #1
+ 269              	.LBE6:
+  85:Core/Src/scheduler.c ****         }
+  86:Core/Src/scheduler.c ****     }
+  87:Core/Src/scheduler.c ****     return 0;
+  88:Core/Src/scheduler.c **** }...
+ 270              		.loc 1 88 1 view .LVU70
+ 271 003c 10BD     		pop	{r4, pc}
+ 272              	.LVL19:
+ 273              	.L31:
+ 274              	.LCFI3:
+ 275              		.cfi_def_cfa_offset 0
+ 276              		.cfi_restore 4
+ 277              		.cfi_restore 14
+ 278              	.LBB8:
+  74:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 8
+
+
+ 279              		.loc 1 74 44 is_stmt 1 discriminator 2 view .LVU71
+  74:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 280              		.loc 1 74 45 is_stmt 0 discriminator 2 view .LVU72
+ 281 003e 0133     		adds	r3, r3, #1
+ 282              	.LVL20:
+  74:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 283              		.loc 1 74 45 discriminator 2 view .LVU73
+ 284 0040 DBB2     		uxtb	r3, r3
+ 285              	.LVL21:
+ 286              	.L25:
+  74:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 287              		.loc 1 74 25 is_stmt 1 discriminator 1 view .LVU74
+  74:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 288              		.loc 1 74 5 is_stmt 0 discriminator 1 view .LVU75
+ 289 0042 092B     		cmp	r3, #9
+ 290 0044 09D8     		bhi	.L36
+  76:Core/Src/scheduler.c ****         if(schTasks[i].TaskId == id)
+ 291              		.loc 1 76 9 is_stmt 1 view .LVU76
+  76:Core/Src/scheduler.c ****         if(schTasks[i].TaskId == id)
+ 292              		.loc 1 76 23 is_stmt 0 view .LVU77
+ 293 0046 03EB8302 		add	r2, r3, r3, lsl #2
+ 294 004a 0649     		ldr	r1, .L37
+ 295 004c 01EB8202 		add	r2, r1, r2, lsl #2
+ 296 0050 1269     		ldr	r2, [r2, #16]
+  76:Core/Src/scheduler.c ****         if(schTasks[i].TaskId == id)
+ 297              		.loc 1 76 11 view .LVU78
+ 298 0052 8242     		cmp	r2, r0
+ 299 0054 F3D1     		bne	.L31
+ 300              	.LBE8:
+  70:Core/Src/scheduler.c **** {
+ 301              		.loc 1 70 1 view .LVU79
+ 302 0056 10B5     		push	{r4, lr}
+ 303              	.LCFI4:
+ 304              		.cfi_def_cfa_offset 8
+ 305              		.cfi_offset 4, -8
+ 306              		.cfi_offset 14, -4
+ 307              	.LBB9:
+ 308 0058 E9E7     		b	.L26
+ 309              	.L36:
+ 310              	.LCFI5:
+ 311              		.cfi_def_cfa_offset 0
+ 312              		.cfi_restore 4
+ 313              		.cfi_restore 14
+  70:Core/Src/scheduler.c **** {
+ 314              		.loc 1 70 1 view .LVU80
+ 315              	.LBE9:
+  87:Core/Src/scheduler.c ****     return 0;
+ 316              		.loc 1 87 12 view .LVU81
+ 317 005a 0020     		movs	r0, #0
+ 318              	.LVL22:
+ 319              	.LBB10:
+  87:Core/Src/scheduler.c ****     return 0;
+ 320              		.loc 1 87 12 view .LVU82
+ 321 005c 7047     		bx	lr
+ 322              	.LVL23:
+ 323              	.L30:
+  87:Core/Src/scheduler.c ****     return 0;
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 9
+
+
+ 324              		.loc 1 87 12 view .LVU83
+ 325              	.LBE10:
+  72:Core/Src/scheduler.c ****         return 0;
+ 326              		.loc 1 72 16 view .LVU84
+ 327 005e 0020     		movs	r0, #0
+ 328              	.LVL24:
+ 329              		.loc 1 88 1 view .LVU85
+ 330 0060 7047     		bx	lr
+ 331              	.L38:
+ 332 0062 00BF     		.align	2
+ 333              	.L37:
+ 334 0064 00000000 		.word	.LANCHOR0
+ 335              		.cfi_endproc
+ 336              	.LFE3:
+ 338              		.section	.text.SchDispatchTasks,"ax",%progbits
+ 339              		.align	1
+ 340              		.global	SchDispatchTasks
+ 341              		.syntax unified
+ 342              		.thumb
+ 343              		.thumb_func
+ 345              	SchDispatchTasks:
+ 346              	.LFB1:
+  26:Core/Src/scheduler.c **** {
+ 347              		.loc 1 26 1 is_stmt 1 view -0
+ 348              		.cfi_startproc
+ 349              		@ args = 0, pretend = 0, frame = 0
+ 350              		@ frame_needed = 0, uses_anonymous_args = 0
+ 351 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 352              	.LCFI6:
+ 353              		.cfi_def_cfa_offset 32
+ 354              		.cfi_offset 3, -32
+ 355              		.cfi_offset 4, -28
+ 356              		.cfi_offset 5, -24
+ 357              		.cfi_offset 6, -20
+ 358              		.cfi_offset 7, -16
+ 359              		.cfi_offset 8, -12
+ 360              		.cfi_offset 9, -8
+ 361              		.cfi_offset 14, -4
+  27:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 362              		.loc 1 27 5 view .LVU87
+ 363              	.LBB11:
+  27:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 364              		.loc 1 27 10 view .LVU88
+ 365              	.LVL25:
+  27:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 366              		.loc 1 27 18 is_stmt 0 view .LVU89
+ 367 0004 0024     		movs	r4, #0
+  27:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 368              		.loc 1 27 5 view .LVU90
+ 369 0006 07E0     		b	.L40
+ 370              	.LVL26:
+ 371              	.L47:
+ 372              	.LBB12:
+  39:Core/Src/scheduler.c ****                 SchDeleteTask(schTasks[i].TaskId);
+ 373              		.loc 1 39 17 is_stmt 1 view .LVU91
+ 374 0008 2869     		ldr	r0, [r5, #16]
+ 375 000a FFF7FEFF 		bl	SchDeleteTask
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 10
+
+
+ 376              	.LVL27:
+ 377              	.L43:
+  46:Core/Src/scheduler.c ****             free(temp);
+ 378              		.loc 1 46 13 view .LVU92
+ 379 000e 4846     		mov	r0, r9
+ 380 0010 FFF7FEFF 		bl	free
+ 381              	.LVL28:
+ 382              	.L41:
+  46:Core/Src/scheduler.c ****             free(temp);
+ 383              		.loc 1 46 13 is_stmt 0 view .LVU93
+ 384              	.LBE12:
+  27:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 385              		.loc 1 27 44 is_stmt 1 discriminator 2 view .LVU94
+  27:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 386              		.loc 1 27 45 is_stmt 0 discriminator 2 view .LVU95
+ 387 0014 0134     		adds	r4, r4, #1
+ 388              	.LVL29:
+  27:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 389              		.loc 1 27 45 discriminator 2 view .LVU96
+ 390 0016 E4B2     		uxtb	r4, r4
+ 391              	.LVL30:
+ 392              	.L40:
+  27:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 393              		.loc 1 27 25 is_stmt 1 discriminator 1 view .LVU97
+  27:Core/Src/scheduler.c ****     for (uint8_t i = 0; i < SCH_MAX_TASKS; i++)
+ 394              		.loc 1 27 5 is_stmt 0 discriminator 1 view .LVU98
+ 395 0018 092C     		cmp	r4, #9
+ 396 001a 33D8     		bhi	.L46
+  29:Core/Src/scheduler.c ****         if(schTasks[i].RunMe)
+ 397              		.loc 1 29 9 is_stmt 1 view .LVU99
+  29:Core/Src/scheduler.c ****         if(schTasks[i].RunMe)
+ 398              		.loc 1 29 23 is_stmt 0 view .LVU100
+ 399 001c 04EB8403 		add	r3, r4, r4, lsl #2
+ 400 0020 194A     		ldr	r2, .L48
+ 401 0022 02EB8303 		add	r3, r2, r3, lsl #2
+ 402 0026 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+  29:Core/Src/scheduler.c ****         if(schTasks[i].RunMe)
+ 403              		.loc 1 29 11 view .LVU101
+ 404 0028 002B     		cmp	r3, #0
+ 405 002a F3D0     		beq	.L41
+ 406              	.LBB13:
+  31:Core/Src/scheduler.c ****             schTasks[i].RunMe = 0;
+ 407              		.loc 1 31 13 is_stmt 1 view .LVU102
+  31:Core/Src/scheduler.c ****             schTasks[i].RunMe = 0;
+ 408              		.loc 1 31 31 is_stmt 0 view .LVU103
+ 409 002c 1746     		mov	r7, r2
+ 410 002e 04EB8405 		add	r5, r4, r4, lsl #2
+ 411 0032 4FEA8508 		lsl	r8, r5, #2
+ 412 0036 02EB8505 		add	r5, r2, r5, lsl #2
+ 413 003a 0023     		movs	r3, #0
+ 414 003c 2B73     		strb	r3, [r5, #12]
+  32:Core/Src/scheduler.c ****             (*schTasks[i].pTask)();
+ 415              		.loc 1 32 13 is_stmt 1 view .LVU104
+  32:Core/Src/scheduler.c ****             (*schTasks[i].pTask)();
+ 416              		.loc 1 32 14 is_stmt 0 view .LVU105
+ 417 003e 52F80830 		ldr	r3, [r2, r8]
+ 418 0042 9847     		blx	r3
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 11
+
+
+ 419              	.LVL31:
+  34:Core/Src/scheduler.c ****             task *temp = (task *)malloc(sizeof(task));
+ 420              		.loc 1 34 13 is_stmt 1 view .LVU106
+  34:Core/Src/scheduler.c ****             task *temp = (task *)malloc(sizeof(task));
+ 421              		.loc 1 34 34 is_stmt 0 view .LVU107
+ 422 0044 1420     		movs	r0, #20
+ 423 0046 FFF7FEFF 		bl	malloc
+ 424              	.LVL32:
+ 425 004a 8146     		mov	r9, r0
+ 426              	.LVL33:
+  35:Core/Src/scheduler.c ****             memcpy(temp, &schTasks[i], sizeof(task));
+ 427              		.loc 1 35 13 is_stmt 1 view .LVU108
+ 428 004c 57F80830 		ldr	r3, [r7, r8]	@ unaligned
+ 429 0050 6868     		ldr	r0, [r5, #4]	@ unaligned
+ 430              	.LVL34:
+  35:Core/Src/scheduler.c ****             memcpy(temp, &schTasks[i], sizeof(task));
+ 431              		.loc 1 35 13 is_stmt 0 view .LVU109
+ 432 0052 A968     		ldr	r1, [r5, #8]	@ unaligned
+ 433 0054 EA68     		ldr	r2, [r5, #12]	@ unaligned
+ 434 0056 C9F80030 		str	r3, [r9]	@ unaligned
+ 435 005a C9F80400 		str	r0, [r9, #4]	@ unaligned
+ 436 005e C9F80810 		str	r1, [r9, #8]	@ unaligned
+ 437 0062 C9F80C20 		str	r2, [r9, #12]	@ unaligned
+ 438 0066 2B69     		ldr	r3, [r5, #16]	@ unaligned
+ 439 0068 C9F81030 		str	r3, [r9, #16]	@ unaligned
+  37:Core/Src/scheduler.c ****             if(schTasks[i].Period == 0)
+ 440              		.loc 1 37 13 is_stmt 1 view .LVU110
+  37:Core/Src/scheduler.c ****             if(schTasks[i].Period == 0)
+ 441              		.loc 1 37 27 is_stmt 0 view .LVU111
+ 442 006c AB68     		ldr	r3, [r5, #8]
+  37:Core/Src/scheduler.c ****             if(schTasks[i].Period == 0)
+ 443              		.loc 1 37 15 view .LVU112
+ 444 006e 002B     		cmp	r3, #0
+ 445 0070 CAD0     		beq	.L47
+  43:Core/Src/scheduler.c ****                 schTasks[i].Delay = temp->Period;
+ 446              		.loc 1 43 17 is_stmt 1 view .LVU113
+  43:Core/Src/scheduler.c ****                 schTasks[i].Delay = temp->Period;
+ 447              		.loc 1 43 41 is_stmt 0 view .LVU114
+ 448 0072 D9F80820 		ldr	r2, [r9, #8]
+  43:Core/Src/scheduler.c ****                 schTasks[i].Delay = temp->Period;
+ 449              		.loc 1 43 35 view .LVU115
+ 450 0076 04EB8406 		add	r6, r4, r4, lsl #2
+ 451 007a 034B     		ldr	r3, .L48
+ 452 007c 03EB8606 		add	r6, r3, r6, lsl #2
+ 453 0080 7260     		str	r2, [r6, #4]
+ 454 0082 C4E7     		b	.L43
+ 455              	.LVL35:
+ 456              	.L46:
+  43:Core/Src/scheduler.c ****                 schTasks[i].Delay = temp->Period;
+ 457              		.loc 1 43 35 view .LVU116
+ 458              	.LBE13:
+ 459              	.LBE11:
+  49:Core/Src/scheduler.c **** }
+ 460              		.loc 1 49 1 view .LVU117
+ 461 0084 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 462              	.LVL36:
+ 463              	.L49:
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 12
+
+
+  49:Core/Src/scheduler.c **** }
+ 464              		.loc 1 49 1 view .LVU118
+ 465              		.align	2
+ 466              	.L48:
+ 467 0088 00000000 		.word	.LANCHOR0
+ 468              		.cfi_endproc
+ 469              	.LFE1:
+ 471              		.global	schTasks
+ 472              		.section	.bss.schTasks,"aw",%nobits
+ 473              		.align	2
+ 474              		.set	.LANCHOR0,. + 0
+ 477              	schTasks:
+ 478 0000 00000000 		.space	200
+ 478      00000000 
+ 478      00000000 
+ 478      00000000 
+ 478      00000000 
+ 479              		.text
+ 480              	.Letext0:
+ 481              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 482              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 483              		.file 4 "Core/Inc/scheduler.h"
+ 484              		.file 5 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ARM GAS  C:\Users\james\AppData\Local\Temp\ccMrLr8D.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 scheduler.c
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:18     .text.SchUpdate:00000000 $t
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:24     .text.SchUpdate:00000000 SchUpdate
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:96     .text.SchUpdate:00000044 $d
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:101    .text.SchAddTask:00000000 $t
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:107    .text.SchAddTask:00000000 SchAddTask
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:201    .text.SchAddTask:00000040 $d
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:206    .text.SchDeleteTask:00000000 $t
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:212    .text.SchDeleteTask:00000000 SchDeleteTask
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:334    .text.SchDeleteTask:00000064 $d
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:339    .text.SchDispatchTasks:00000000 $t
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:345    .text.SchDispatchTasks:00000000 SchDispatchTasks
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:467    .text.SchDispatchTasks:00000088 $d
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:477    .bss.schTasks:00000000 schTasks
+C:\Users\james\AppData\Local\Temp\ccMrLr8D.s:473    .bss.schTasks:00000000 $d
+
+UNDEFINED SYMBOLS
+free
+malloc
